@@ -1,0 +1,26 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Make
+        run: sudo apt-get install make
+
+      - name: Run Make
+        run: make
+
+      - name: Deploy to GitHub Pages
+        run: |
+          # Add your deployment commands here
+          # Example: npm install && npm run deploy
+        if: success()
